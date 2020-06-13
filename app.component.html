@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+  <style>
+    table,th,td{
+      border: 1px solid black;
+      padding: 5px;
+    }
+   
+    </style>
+
+<div class="container-fluid">
+  <div class="row">
+<div class="col-6">
+    <form #f="ngForm" name="form" (ngSubmit)="onSubmit(f)"autocomplete="off">
+      <div class="form-group">
+        
+        <input type ="hidden"[(ngModel)] = "vehicle.id" name="id"  class="form-control" >
+      </div>
+      <div class="form-group">
+      <label>vechicle_company</label>
+      <input [(ngModel)] = "vehicle.vehicle_company" name="vehicle_company" type="text" class="form-control" >
+    </div>
+    <div class="form-group">
+      <label>vechicle_model</label>
+      <input [(ngModel)] = "vehicle.vehicle_model" name="vehicle_model" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>vechicle_number</label>
+      <input [(ngModel)] =  "vehicle.vehicle_number" name= "vehicle_number"  type="number" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>vechicle_colour</label>
+      <input [(ngModel)] = "vehicle.vehicle_colour" name="vehicle_colour" type="text" class="form-control">
+    </div>
+    
+   
+    <button type="submit" class="btn btn-success">{{isEdit ? 'update' : 'create'}}</button>
+  </form> 
+    </div>
+    
+
+    <div class= "col-6">
+      <table class="table table-stripped">
+      <thead>
+        <tr>
+        <th>id</th>
+        <th>vechicle_company</th>
+        <th>vechicle_model</th>
+        <th>vechicle_number</th>
+        <th>vechicle_colour</th>            
+        <th>Edit</th>
+        <th>Delete</th>
+        </tr>
+        </thead>
+          <tbody *ngFor = "let vehicle of vehicleList">
+           <tr>
+             <td>{{vehicle.id}}</td>
+            <td>{{vehicle.vechicle_company}}</td>
+            <td>{{vehicle.vechicle_model}}</td>
+            <td>{{vehicle.vechicle_number}}</td>
+            <td>{{vehicle.vechicle_colour}}</td>
+            <td><button  id="editbtn" class="btn page-primary-action-btn" (click)="edit(vehicle)" type="submit">Edit</button></td>
+            <td><button  id="deletebtn" class="btn page-primary-action-btn" (click)="delete(vehicle.id)" type="submit">Delete</button> </td>
+ 
+          </tr>
+            </tbody>
+        
+          </table>
+          </div>
+          </div>
+          </div>
+    
